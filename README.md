@@ -16,7 +16,7 @@ https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
 
 1515035 신채연(acc11311) : 채팅방과 지도 api 연동, 중간 ppt 제작, 기말 발표자
 
-1771025 방수정(tnwjd7732) : 채팅방 목록 만들기, 중간 발표자
+1771025 방수정(tnwjd7732) : 채팅방 목록 만들기, 중간 발표자!!
 
 1771054 최라윤(RayunC) : 지도 api 내 마커 등록, 중간 발표자
 
