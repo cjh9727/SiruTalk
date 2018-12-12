@@ -21,3 +21,5 @@ https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
 1771054 최라윤(RayunC) : 지도 api 내 마커 등록, 중간 발표자
 
 1771109 최정화(cjh9727) : 앱 로고 디자인, 기말 ppt 제작
+
+;)
