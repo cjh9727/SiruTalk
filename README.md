@@ -1,14 +1,16 @@
 # Android messenger "Siru-Talk"
 ---
-시루톡
----
+## 1. 시루톡
 
+시루톡은 사용자가 보낸 메시지의 잘못된 맞춤법을 자동으로 인식 및 수정하여 전송한다.
+이것으로 사용자의 올바른 맞춤법 사용을 돕고 사용자 간의 원활한 의사소통을 가능하게 한다.
 
-시루톡은 사용자가 보낸 메시지의 잘못된 맞춤법을 자동으로 인식 및 수정하여 사용자의 올바른 맞춤법 사용을 돕고, 부가적으로 사용자간의 원활한 의사소통을 이끌어내는 메신저이다.
+## 2. 
+dfdf
 
 ## License
 
-Apache License Version 2.0
+GPLv3 License
 
 https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
 
