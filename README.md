@@ -66,13 +66,18 @@ try {
 public void onFailure(Call<ResponseBody> call, Throwable t) {
                 sendMessage(text, true);
             }
+     
+## 4. 사용 오픈소스
++ Chat SDK for Android 오픈소스 https://github.com/chat-sdk/chat-sdk-android
++ 네이버 맞춤법 검사기 https://search.naver.com/search.naver?sm=top_sug.pre&fbm=1&acr=1&acq=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%A7%9E%EC%B6%94&qdt=0&ie=utf8&query=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B2%80%EC%82%AC%EA%B8%B0
 
-## 4. 개발자 정보
-+ 1515035 신채연(acc11311) : HTTP 요청 전송 작업, firebase, 중간 ppt 제작, 기말 발표자
-+ 1771025 방수정(tnwjd7732) : 맞춤법 교정 API, UI, 중간 발표자
-+ 1771054 최라윤(RayunC) : 맞춤법 교정 API, UI, 중간 발표자
-+ 1771109 최정화(cjh9727) : HTTP 요청 전송 작업, 앱 로고 디자인, UI, 기말 ppt 제작
 
 ## 5. License
 GPLv3 License
 https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
+
+## 6. 개발자 정보
++ 1515035 신채연(acc11311) : HTTP 요청 전송 작업, firebase, 중간 ppt 제작, 기말 발표자
++ 1771025 방수정(tnwjd7732) : 맞춤법 교정 API, UI, 중간 발표자
++ 1771054 최라윤(RayunC) : 맞춤법 교정 API, UI, 중간 발표자, 기말 발표자
++ 1771109 최정화(cjh9727) : HTTP 요청 전송 작업, 앱 로고 디자인, UI, 기말 ppt 제작
