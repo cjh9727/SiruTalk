@@ -13,8 +13,7 @@
 ## 3. 주요 기능 및 관련 코드/API 설명
 
 + 맞춤법 교정 API (retrofit 사용) //codeblock public interface SpellCheckAPI {
-
-// query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0") Call Speller(@Query("q") String query);
+// query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0")  Call Speller(@Query("q") String query);
 
 // retrofit 객체 (네이버 맞춤법 검사 URL에 맞게 생성) Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }
 
