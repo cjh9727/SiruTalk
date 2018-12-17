@@ -49,17 +49,21 @@ HTTP 요청 전송 준비 작업
       }
 
 #### D. http 요청 실패 - onFailure
-+ JSON 데이터 파싱으로 변환된 메시지를 추출
-      //codeblock try {
+JSON 데이터 파싱으로 변환된 메시지를 추출
+      
+      try {
       JSONObject jsonObject = new JSONObject(result);
-      jsonObject = jsonObject.getJSONObject("message").getJSONObject("result"); sendMessage(Html.fromHtml(jsonObject.getString("notag_html")).toString(), true); // 메시지 전송 
+      jsonObject = jsonObject.getJSONObject("message").getJSONObject("result");
+      sendMessage(Html.fromHtml(jsonObject.getString("notag_html")).toString(), true); 
+      // 메시지 전송 
       } catch (Exception e) {
       e.printStackTrace();
       onFailure(call, new Throwable(e.getMessage()));
       }
 
-+ 맞춤법 검사기 요청이 실패했으면 원래 메시지를 그대로 전송 
-      //codeblock public void onFailure(Call call, Throwable t) { sendMessage(text, true); }
+맞춤법 검사기 요청이 실패했으면 원래 메시지를 그대로 전송 
+      
+      public void onFailure(Call call, Throwable t) { sendMessage(text, true); }
 
 ## 4. 사용 오픈소스
 + Chat SDK for Android 오픈소스 https://github.com/chat-sdk/chat-sdk-android
