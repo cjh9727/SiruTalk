@@ -7,11 +7,11 @@
 + chat-sdk-android.apk를 안드로이드 기기에 다운로드한다.
 + 알 수 없는 개발자 허용 후 설치 버튼을 누른다.
 + 처음 앱 실행 시 가입을 진행한다. 혹은 구글 아이디로 로그인한다.
-<img src="https://user-images.githubusercontent.com/43198950/50071527-6561fc80-0215-11e9-9c2c-97386352dd8a.jpg" width="90%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071527-6561fc80-0215-11e9-9c2c-97386352dd8a.jpg" width="50%"></img>
 + 로그인 후, 상단 메뉴의 Chat Rooms를 누른다.
-<img src="https://user-images.githubusercontent.com/43198950/50071536-6c890a80-0215-11e9-8812-ed4a567323da.jpg" width="90%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071536-6c890a80-0215-11e9-8812-ed4a567323da.jpg" width="70%"></img>
 + 기존 채팅방에 들어가거나, + 버튼을 통해 채팅방을 개설하여 채팅방에 입장하면 대화가 가능하다.
-<img src="https://user-images.githubusercontent.com/43198950/50071545-76127280-0215-11e9-8fcc-6336622b84fd.jpg" width="90%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071545-76127280-0215-11e9-8fcc-6336622b84fd.jpg" width="40%"></img>
 + 상단 메뉴의 Profile을 누르면 프로필 수정이 가능하다.
 <div>
 <img src="https://user-images.githubusercontent.com/43198950/50071567-8f1b2380-0215-11e9-9beb-2a40cc31612d.jpg" width="90%"></img>
