@@ -23,15 +23,23 @@
 
 ### 3-2. 맞춤법 검사 구현 - ChatActivity
 #### A. 500자 초과 메세지 
-500자 초과의 메세지는 그대로 전송 (네이버 맞춤법 검사기가 500자 까지 지원) 
-    
+onSendPressed 메소드에서는 postCorrectSpellMessage (맞춤법 검사) 메서드를 호출한다. 
+
+    public void onSendPressed(String text) {
+        postCorrectSpellMessage(text);
+    }
+  
+retrofit 객체로 네이버 맞춤법검사기에 접근해 text를 올바르게 설정하여 send하는 메소드
+500자 초과의 메세지는 그대로 전송 (네이버 맞춤법 검사기가 500자 까지 지원)
+
+    private void postCorrectSpellMessage(String text) {  
     if (text.length() > 500) {
      sendMessage(text, true);
      return; 
      }
 
 #### B. 요청 준비작업
-HTTP 요청 전송 준비 작업 
+HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체를 생성한다.
 
       SpellCheckAPI api = SpellCheckAPI.retrofit.create(SpellCheckAPI.class);
       Call http = api.Speller(text);
