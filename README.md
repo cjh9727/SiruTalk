@@ -15,11 +15,13 @@
 ### 3-1. 맞춤법 교정 API - SpellCheckAPI
 맞춤법 교정 API (retrofit 사용) 
       
-      ```public interface SpellCheckAPI {
+      ```java
+      public interface SpellCheckAPI {
         // query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 
         @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0")  Call Speller(@Query("q") String query);
         // retrofit 객체 (네이버 맞춤법 검사 URL에 맞게 생성)
-        Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }```
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }
+        ```
 
 ### 3-2. 맞춤법 검사 구현 - ChatActivity
 #### A. 500자 초과 메세지 
@@ -56,7 +58,6 @@ HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체를 생성한다.
       return;
       }
 
-#### D. http 요청 실패 - onFailure
 JSON 데이터 파싱으로 변환된 메시지를 추출
       
       try {
@@ -68,7 +69,8 @@ JSON 데이터 파싱으로 변환된 메시지를 추출
       e.printStackTrace();
       onFailure(call, new Throwable(e.getMessage()));
       }
-
+      
+#### D. http 요청 실패 - onFailure
 맞춤법 검사기 요청이 실패했으면 원래 메시지를 그대로 전송 
       
       public void onFailure(Call call, Throwable t) { sendMessage(text, true); }
