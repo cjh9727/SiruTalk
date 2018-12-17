@@ -14,18 +14,16 @@
 ## 3. 주요 기능 및 관련 코드/API 설명
 ### 3-1. 맞춤법 교정 API - SpellCheckAPI
 맞춤법 교정 API (retrofit 사용) 
-      
-      ```java
+     
       public interface SpellCheckAPI {
         // query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 
         @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0")  Call Speller(@Query("q") String query);
         // retrofit 객체 (네이버 맞춤법 검사 URL에 맞게 생성)
         Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }
-        ```
-
+        
 ### 3-2. 맞춤법 검사 구현 - ChatActivity
 #### A. 500자 초과 메세지 
-onSendPressed 메소드에서는 postCorrectSpellMessage (맞춤법 검사) 메서드를 호출한다. 
+onSendPressed 메소드에서 postCorrectSpellMessage (맞춤법 검사) 메서드 호출
 
     public void onSendPressed(String text) {
         postCorrectSpellMessage(text);
@@ -41,7 +39,7 @@ retrofit 객체로 네이버 맞춤법검사기에 접근해 text를 올바르�
      }
 
 #### B. 요청 준비작업
-HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체를 생성한다.
+HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체 생성
 
       SpellCheckAPI api = SpellCheckAPI.retrofit.create(SpellCheckAPI.class);
       Call http = api.Speller(text);
