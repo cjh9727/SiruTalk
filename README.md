@@ -1,23 +1,43 @@
 # Android messenger "Siru-Talk"
----
-시루톡
----
+## 1. 시루톡
+시루톡은 사용자가 보낸 메시지의 잘못된 맞춤법을 자동으로 인식 및 수정하여 전송한다. 이것으로 사용자의 올바른 맞춤법 사용을 돕고 사용자 간의 원활한 의사소통을 가능하게 한다.
 
+## 2. 앱 설치 방법 및 사용법
++ chat-sdk-android.apk를 안드로이드 기기에 다운로드한다.
++ 알 수 없는 개발자 허용 후 설치 버튼을 누른다.
++ 처음 앱 실행 시 가입을 진행한다.
++ 로그인 후, 상단 메뉴의 Chat Rooms를 누른다.
++ 기존 채팅방에 들어가거나, + 버튼을 통해 채팅방을 개설하여 채팅방에 입장하면 대화가 가능하다.
++ 상단 메뉴의 Profile을 누르면 프로필 수정이 가능하다.
 
-시루톡은 지도 api를 사용하여 각 지역의 특색을 살린 채팅방을 개설, 사용자간의 자발적인 지역 정보 공유가 발생하도록 돕는 안드로이드 메신저 어플리케이션이다.
+** Hi
+## 3. 주요 기능 및 관련 코드/API 설명
 
-## License
++ 맞춤법 교정 API (retrofit 사용) //codeblock public interface SpellCheckAPI {
 
-Apache License Version 2.0
+// query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0")  Call Speller(@Query("q") String query);
 
-https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
+// retrofit 객체 (네이버 맞춤법 검사 URL에 맞게 생성) Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }
 
-## Developers
++ 500자 초과의 메세지는 그대로 전송 (네이버 맞춤법 검사기가 500자 까지 지원) //codeblock if (text.length() > 500) { sendMessage(text, true); return; }
 
-1515035 신채연(acc11311) : 채팅방과 지도 api 연동, 중간 ppt 제작, 기말 발표자
++ HTTP 요청 전송 준비 작업 //codeblock SpellCheckAPI api = SpellCheckAPI.retrofit.create(SpellCheckAPI.class); Call http = api.Speller(text);
 
-1771025 방수정(tnwjd7732) : 채팅방 목록 만들기, 중간 발표자!!
++ 받은 Response Body를 문자열 형태로 변환 //codeblock String result; try { result = response.body().string(); } catch (Exception e) { e.printStackTrace(); onFailure(call, new Throwable(e.getMessage())); return; }
 
-1771054 최라윤(RayunC) : 지도 api 내 마커 등록, 중간 발표자
++ JSON 데이터 파싱으로 변환된 메시지를 추출 //codeblock try { JSONObject jsonObject = new JSONObject(result); jsonObject = jsonObject.getJSONObject("message").getJSONObject("result"); sendMessage(Html.fromHtml(jsonObject.getString("notag_html")).toString(), true); // 메시지 전송 } catch (Exception e) { e.printStackTrace(); onFailure(call, new Throwable(e.getMessage())); }
 
-1771109 최정화(cjh9727) : 앱 로고 디자인, 기말 ppt 제작
++ 맞춤법 검사기 요청이 실패했으면 원래 메시지를 그대로 전송 //codeblock public void onFailure(Call call, Throwable t) { sendMessage(text, true); }
+
+## 4. 사용 오픈소스
++ Chat SDK for Android 오픈소스 https://github.com/chat-sdk/chat-sdk-android
++ 네이버 맞춤법 검사기 https://search.naver.com/search.naver?sm=top_sug.pre&fbm=1&acr=1&acq=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%A7%9E%EC%B6%94&qdt=0&ie=utf8&query=%EB%84%A4%EC%9D%B4%EB%B2%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B2%80%EC%82%AC%EA%B8%B0
+
+## 5. License
+GPLv3 License https://github.com/cjh9727/SiruTalk/blob/master/LICENSE
+
+## 6. 개발자 정보
++ 1515035 신채연(acc11311) : HTTP 요청 전송 작업, firebase, 중간 ppt 제작, 기말 발표자
++ 1771025 방수정(tnwjd7732) : 맞춤법 교정 API, UI, 중간 발표자
++ 1771054 최라윤(RayunC) : 맞춤법 교정 API, UI, 중간 발표자, 기말 발표자
++ 1771109 최정화(cjh9727) : HTTP 요청 전송 작업, 앱 로고 디자인, UI, 기말 ppt 제작
