@@ -25,10 +25,11 @@
 ### 3-2. 맞춤법 검사 구현 - ChatActivity
 #### A. 500자 초과 메세지 
 + 500자 초과의 메세지는 그대로 전송 (네이버 맞춤법 검사기가 500자 까지 지원) 
-     //codeblock if (text.length() > 500) {
+     <pre>
+     if (text.length() > 500) {
      sendMessage(text, true);
      return; 
-     }
+     } <code>
 
 #### B. 요청 준비작업
 + HTTP 요청 전송 준비 작업 
@@ -37,7 +38,7 @@
 
 #### C. http 요청 성공 - OnResponse
 + 받은 Response Body를 문자열 형태로 변환 
-      //codeblock String result;
+      <String result;
       try {
       result = response.body().string(); 
       }catch (Exception e) {
