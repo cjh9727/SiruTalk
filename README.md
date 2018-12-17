@@ -27,8 +27,8 @@
 
 ## 3. 주요 기능 및 관련 코드/API 설명
 ### 3-1. Retrofit2 - http 통신
-+ Retrofit은 HTTP REST API를 자바 인터페이스로 제공하는데, 다른 라이브러리보다 통신을 안전하고 간편하게 구현 할 수 있어 사용
-+ 유사 라이브러리 Volley에 비하여 25 discussions 기준 약  4.2배, AsyncTask에 비하여 14배 빠른 속도를 가짐 
++ Retrofit은 HTTP REST API를 자바 인터페이스로 제공하는데, 다른 통신 관련 라이브러리보다 안전하고 간편하여 사용했다.
++ 유사 라이브러리 Volley에 비하여 25 discussions 기준 약  4.2배, AsyncTask에 비하여 14배 빠른 속도를 가짐을 알 수 있다.
 + Retrofit2를 이용하기 위한 2단계 기초작업
 
           //먼저 Gradle Scripts>build.gradle(Module:chat-sdk-ui)
@@ -37,34 +37,34 @@
           //그 다음, 네트워크 사용을 위해 app단위 manifest파일에 아래 인터넷 사용 허가를 추가
 		<uses-permission android:name="android.permission.INTERNET"/>
 
-+ 기본으로 제공하는 5가지 요청 어노테이션 (@GET, @POST, @PUT, @DELETE, @HEAD) 중 시루톡은 @GET request를 통해 데이터를 읽어옴
++ 기본으로 제공하는 5가지 요청 어노테이션 (@GET, @POST, @PUT, @DELETE, @HEAD) 중 시루톡은 @GET request를 통해 데이터를 읽어온다.
 
 ### 3-2. 맞춤법 교정 API - SpellCheckAPI
-+ 맞춤법 교정 API가 현재 없는것으로 판단되어 retrofit을 통해 naver와 통신해 SIRU talk만의 맞춤법 교정 API 구현
++ 제공되는 맞춤법 교정 API가 현재 없는것으로 판단되어, Retrofit을 통해 Naver와 통신하는 SIRU talk만의 맞춤법 교정 API를 직접 구현했다.
 + (retrofit에 대한 자세한 정보은 3-1에서 확인 가능)
-+ SpellCheckAPI 인터페이스는 naver 맞춤법 검사 URL에 입력받은 문자열의 교정을 요청
-+ retrofit 객체의 base URL은 naver 모바일 버전의 기본 URL에 /를 더한 "https://m.search.naver.com/"
++ SpellCheckAPI 인터페이스는 naver 맞춤법 검사 URL에 입력받은 문자열을 더해 교정을 요청한다.
++ base URL은 naver 모바일 버전의 기본 URL에 /를 더한 "https://m.search.naver.com/" 이며, 뒷부분은 전달받는 값에따라 달라진다.
 
-   public interface SpellCheckAPI {
-        // query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청 
-        @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0")
+        // query를 넣어주면 해당 문자열을 맞춤법에 맞게 교정하도록 네이버에 요청
+        public interface SpellCheckAPI {
+	  //5가지 어노테이션 중, 데이터를 받아오는 @GET request 사용
+        @GET("p/csearch/ocontent/util/SpellerProxy?color_blindness=0") 
         Call Speller(@Query("q") String query);
-        
+      
         // retrofit 객체 (네이버 맞춤법 검사 URL에 맞게 생성)
         Retrofit retrofit = new Retrofit.Builder() .baseUrl("https://m.search.naver.com/") .build(); }
         
 ### 3-3. 맞춤법 검사 구현 - ChatActivity
 #### A. 500자 초과 메세지 
-맞춤법을 교정하는 postCorrectSpellMessage는 onSendPressed 메소드에서 호출
-매개변수로 사용자가 입력한 text를 넘겨받음
++ 맞춤법을 교정하는 postCorrectSpellMessage는 onSendPressed 메소드에서 호출된다.
++ 매개변수로 사용자가 입력한 text를 넘겨받는다.
 
     public void onSendPressed(String text) {
         postCorrectSpellMessage(text);
     }
   
-postCorrectSpellMessage 메소드는 retrofit 객체로 네이버 맞춤법검사기에 접근해 text를 올바르게 설정하여 전송하는 기능
-SIRU talk의 맞춤법 교정기능을 구현하는 핵심 코드
-Naver 맞춤법 검사에 입력할 수 있는 글의 길이가 500이므로, SIRU talk에서 500자 이상의 글은 바로 전송
++ postCorrectSpellMessage 메소드는 SIRU talk의 맞춤법 교정기능을 구현하는 핵심 코드로, text를 올바르게 교정하여 전송하는 기능을 구현한다.
++ Naver 맞춤법 검사에 입력할 수 있는 글의 길이가 500이므로, SIRU talk에서 500자 이상의 글은 바로 전송한다.
 
     private void postCorrectSpellMessage(String text) {  
     if (text.length() > 500) {
@@ -73,20 +73,18 @@ Naver 맞춤법 검사에 입력할 수 있는 글의 길이가 500이므로, SI
      }
 
 #### B. 요청 준비작업
-HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체 생성
-사용자의 입력인 text를 Speller의 query로 넘겨 맞춤법 검사기 URL에 요청 
++ HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체를 생성한다.
++ 사용자의 입력인 text를 Speller의 query로 넘겨 맞춤법 검사기 URL에 요청하는 과정이다. 
 
       SpellCheckAPI api = SpellCheckAPI.retrofit.create(SpellCheckAPI.class);
       Call http = api.Speller(text);
 
 #### C. http 요청 성공 - OnResponse
-+ HTTP 요청에 성공했을때 수행되는 메소드 OnResponse
-+ retrofit을 통해 받은 JSON 파일에서 데이터 파싱으로 메시지를 가져오고 그 메시지를 전송하는 기능
++ HTTP 요청에 성공하면 onResponse 메소드가 수행된다.
 
-받은 Response Body를 문자열 형태로 변환 
-     
       String result;
       try {
+      //받은 Response Body를 문자열 형태로 변환 
       result = response.body().string(); 
       }catch (Exception e) {
       e.printStackTrace();
@@ -94,9 +92,9 @@ HTTP 요청 전송 준비 작업으로 SpellCheckAPI의 객체 생성
       return;
       }
 
-통신의 결과로 받은 데이터 JSON(JavaScript Object Notation)을 데이터 파싱하여, 변환된 메시지를 추출하는 과정
-JSONObject에 JSON형태로 result에 값을 저장하고 key값인 "message"와 "result"로 value를 구함
-데이터 파싱을 통해 얻은 result를 sendMessage 메소드로 전송
++ 통신의 결과로 받은 데이터 JSON(JavaScript Object Notation)파일을 사용 가능한 데이터로 파싱하고 변환된 메시지를 추출하는 과정이다.
++ JSON 파일의 데이터가 {}로 묶여있어 JSONObject 타입으로 받아온다.
++ 데이터 파싱을 통해 얻은 result를 sendMessage 메소드를 통해 전송하며 마무리한다.
       
       try {
       //{}로 묶인 object타입의 데이터를 받기 위해 JSONObject 타입으로 받아오기
@@ -111,7 +109,7 @@ JSONObject에 JSON형태로 result에 값을 저장하고 key값인 "message"와
       }
       
 #### D. http 요청 실패 - onFailure
-맞춤법 검사기 요청이 실패했으면 교정 과정을 거치지 않고 사용자 입력 메시지 전송
++ 맞춤법 검사기 요청이 실패하면 교정 과정을 거치지 않고 사용자 입력 메시지를 전송한다.
       
       public void onFailure(Call call, Throwable t) {
       sendMessage(text, true); }
