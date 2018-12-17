@@ -7,16 +7,16 @@
 + chat-sdk-android.apk를 안드로이드 기기에 다운로드한다.
 + 알 수 없는 개발자 허용 후 설치 버튼을 누른다.
 + 처음 앱 실행 시 가입을 진행한다. 혹은 구글 아이디로 로그인한다.
-<img src="https://user-images.githubusercontent.com/43198950/50071527-6561fc80-0215-11e9-9c2c-97386352dd8a.jpg" width="50%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071527-6561fc80-0215-11e9-9c2c-97386352dd8a.jpg" width="40%"></img>
 + 로그인 후, 상단 메뉴의 Chat Rooms를 누른다.
-<img src="https://user-images.githubusercontent.com/43198950/50071536-6c890a80-0215-11e9-8812-ed4a567323da.jpg" width="70%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071536-6c890a80-0215-11e9-8812-ed4a567323da.jpg" width="40%"></img>
 + 기존 채팅방에 들어가거나, + 버튼을 통해 채팅방을 개설하여 채팅방에 입장하면 대화가 가능하다.
 <img src="https://user-images.githubusercontent.com/43198950/50071545-76127280-0215-11e9-8fcc-6336622b84fd.jpg" width="40%"></img>
 + 상단 메뉴의 Profile을 누르면 프로필 수정이 가능하다.
 <div>
-<img src="https://user-images.githubusercontent.com/43198950/50071567-8f1b2380-0215-11e9-9beb-2a40cc31612d.jpg" width="90%"></img>
-<img src="https://user-images.githubusercontent.com/43198950/50071572-92161400-0215-11e9-8e5e-3e7b557792b3.jpg" width="90%"></img>
-<img src="https://user-images.githubusercontent.com/43198950/50071574-94786e00-0215-11e9-80e5-8d4e0d80e62b.jpg" width="90%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071567-8f1b2380-0215-11e9-9beb-2a40cc31612d.jpg" width="40%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071572-92161400-0215-11e9-8e5e-3e7b557792b3.jpg" width="40%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071574-94786e00-0215-11e9-80e5-8d4e0d80e62b.jpg" width="40%"></img>
 </div>
 
 ## 3. 주요 기능 및 관련 코드/API 설명
@@ -85,8 +85,8 @@ JSON 데이터 파싱으로 변환된 메시지를 추출
 ### 3-3 주요 기능 스크린 샷 
 
 <div>
-<img src="https://user-images.githubusercontent.com/43198950/50071581-99d5b880-0215-11e9-9619-ec79669e67e7.jpg" width="90%"></img>
-<img src="https://user-images.githubusercontent.com/43198950/50071586-9cd0a900-0215-11e9-9209-2598dc80fb6d.jpg" width="90%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071581-99d5b880-0215-11e9-9619-ec79669e67e7.jpg" width="40%"></img>
+<img src="https://user-images.githubusercontent.com/43198950/50071586-9cd0a900-0215-11e9-9209-2598dc80fb6d.jpg" width="40%"></img>
 </div>
 
 ## 4. 사용 오픈소스
