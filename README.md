@@ -11,6 +11,7 @@
 </img>
 
 + 로그인 후, 상단 메뉴의 Chat Rooms를 누른다.
+
 <img src="https://user-images.githubusercontent.com/43198950/50071536-6c890a80-0215-11e9-8812-ed4a567323da.jpg" width="40%"></img>
 
 + 기존 채팅방에 들어가거나, + 버튼을 통해 채팅방을 개설하여 채팅방에 입장하면 대화가 가능하다.
